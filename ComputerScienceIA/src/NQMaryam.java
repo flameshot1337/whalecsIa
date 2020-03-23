@@ -15,20 +15,21 @@ public class NQMaryam extends JFrame {
 
 	private JPanel contentPane;
 	// String Arrays for the select chapter drop down
-		private String[] english = {("englodh 1"), ("english 2")};
-		private String[] urdu = {("writing"), ("reading")};
-		private String[] phy = {("understanding physics"), ("boyles law")};
-		private String[] cs = {("CS 1"), ("XCS2")};
-		private String[] chem = {("Chem1"), ("Chem2")};
-		private String[] geo = {("Geo1"), ("Geo2")};
-		private String[] hist = {("Hist"), ("Hist2")};
-		private String[] isl = {("Isl"), ("Isl")};
-		private String[] maths = {("writin3g"), ("re5ading")};
-		private JTextField textField;
-		private JTextField textField_1;
-		private JTextField textField_2;
-		private JTextField textField_3;
-		private JTextField textField_4;
+	private String[][] chapters = {{("writing"), ("reading")} , 
+			{("wrijyting"), ("readijyjng")},
+			{("m1"), ("m2")},
+			{("ph1"), ("ph3")},
+			{("cs2"), ("cs1")},
+			{("chem1"), ("chem2")},
+			{("jgie"), ("ogeo")},
+			{("his"), ("her")},
+			{("isl1"), ("isl2")}};
+	private String[] subjects = {"English", "Urdu", "Maths", "Physics", "Computer Science", "Chemistry", "Geography", "History", "Islamiyat"};
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 	/**
 	 * Launch the application.
 	 */
@@ -57,7 +58,7 @@ public class NQMaryam extends JFrame {
 		contentPane.setLayout(null);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"English", "Urdu", "Maths", "Physics", "Computer Science", "Chemistry", "Geography", "History", "Islamiyat"}));
+		comboBox.setModel(new DefaultComboBoxModel(subjects));
 		comboBox.setBounds(110, 11, 103, 22);
 		contentPane.add(comboBox);
 
@@ -81,25 +82,9 @@ public class NQMaryam extends JFrame {
 		JButton btnNewButton = new JButton("Done");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (comboBox.getSelectedItem().toString().equals("English")){
-					comboBox_1.setModel(new DefaultComboBoxModel(english));
-				}else if (comboBox.getSelectedItem().toString().equals("Urdu")) {
-					comboBox_1.setModel(new DefaultComboBoxModel(urdu));
-				}else if (comboBox.getSelectedItem().toString().equals("Maths")) {
-					comboBox_1.setModel(new DefaultComboBoxModel(maths));
-				}else if (comboBox.getSelectedItem().toString().equals("Physics")) {
-					comboBox_1.setModel(new DefaultComboBoxModel(phy));
-				}else if (comboBox.getSelectedItem().toString().equals("Computer Science")) {
-					comboBox_1.setModel(new DefaultComboBoxModel(cs));
-				}else if (comboBox.getSelectedItem().toString().equals("Chemistry")) {
-					comboBox_1.setModel(new DefaultComboBoxModel(chem));
-				}else if (comboBox.getSelectedItem().toString().equals("Geography")) {
-					comboBox_1.setModel(new DefaultComboBoxModel(geo));
-				}else if (comboBox.getSelectedItem().toString().equals("History")) {
-					comboBox_1.setModel(new DefaultComboBoxModel(hist));
-				}else if (comboBox.getSelectedItem().toString().equals("Islamiyat")) {
-					comboBox_1.setModel(new DefaultComboBoxModel(isl));
-				}
+				int indexofSub = Arrays.asList(subjects).indexOf(comboBox.getSelectedItem().toString());
+				comboBox_1.setModel(new DefaultComboBoxModel(chapters[indexofSub]));
+				
 			}
 		});
 		btnNewButton.setBounds(234, 11, 89, 23);
